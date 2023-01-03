@@ -33,6 +33,7 @@ export default function Home() {
   const paginado = (pageNumber) => {
     setCurrentpage(pageNumber)
   } 
+  console.log(allCountrys[0]);
 //getAllCountrys
   useEffect(() => {
     dispatch(actions.getAllCountrys());
@@ -51,10 +52,16 @@ function handleFilterStatus(e){
 
 function handleOrder(e) {
 
-  dispatch(actions.AscDes(e.target.value))
+  dispatch(actions.filtrarPorContinente(e.target.value))
   setCurrentpage(1);
   setOrden(`Ordenado${e.target.value}`)
   
+}
+function filtrarAsc (e){
+  dispatch(actions.AscDes(e.target.value))
+}
+function filtrarPoblacion (e) {
+  dispatch(actions.filtrarPorPoblacion(e.target.value))
 }
 
 
@@ -74,13 +81,16 @@ function handleOrder(e) {
 
         
       <div>
-        <select className= {dropbtn} onChange={e => handleOrder(e)}>
+        <select className= {dropbtn} onChange={e =>filtrarAsc (e)}>
           <option value="asc">Alplhabetical Order</option>
           <option value="des">LastOne First</option>
-          <option value="population asc number">
+        </select>
+
+        <select className= {dropbtn} onChange={e => filtrarPoblacion (e)}>
+          <option value="ascpop">
             Order by mayor Population
           </option>
-          <option value="population des number">
+          <option value="despop">
             Order by minor Population
           </option>
         </select>
@@ -93,14 +103,26 @@ function handleOrder(e) {
         </select>
 
 
-        <select className= {dropbtn} onChange={(e) => handleOrder(e)}>
+        {/* <select className= {dropbtn} onChange={(e) => handleOrder(e)}>
           <option value= "AllContinents">All Continents</option>
-          <option value="Americas">Americas</option>
+          <option value="North America">Americas</option>
           <option value= "Europe">Europe</option>
           <option value="Asia">Asia</option>
           <option value="Africa">Africa</option>
           <option value="Oceania">Oceania</option>
-        </select>
+        </select> */}
+
+            <select name = "filteredByContinent" className= {dropbtn} onChange={e =>  handleOrder(e)}>
+                <option value="" selected disabled hidden>Filtered by continent</option>
+                <option value ="allContinents">Default</option>
+                <option value = "Europe">Europe</option>
+                <option value = "Asia">Asia</option>
+                <option value = "Africa">Africa</option>
+                <option value = "North America">North America</option>
+                <option value = "South America">South America</option>
+                <option value = "Oceania">Oceania</option>
+                <option value = "Antarctica">Antarctica</option>
+            </select>
 
         
         <div className={display}>
@@ -110,9 +132,9 @@ function handleOrder(e) {
             return (
               <>
                 <CountryCard
-                  flag={c.bandera}
+                  img={c.img}
                   name={c.name}
-                  region={c.continente}
+                  continent={c.continent}
                   id={c.id}
                   key={c.id}
                   

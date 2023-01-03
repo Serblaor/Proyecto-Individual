@@ -16,9 +16,10 @@
  }
  
  img{
-     border-radius: 10px;
-     border-color: white;
-     width: 70%;
+     border-radius: 20px;
+     border-color: rgb(15, 15, 15);
+     width: 30%;
+     margin-top: 15px;
  }
  
  h3{

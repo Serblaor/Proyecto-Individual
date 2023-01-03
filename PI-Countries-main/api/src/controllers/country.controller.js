@@ -84,7 +84,6 @@ async function getByCountryId (req, res) {
         res.status(404).send({ message: 'Should enter a valid ID'})
     }
 }
-
 module.exports = {
     getCountries,
     getByCountryId

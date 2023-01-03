@@ -8,6 +8,9 @@ export const GET_ALL_ACTIVITY = "GET_ALL_ACTIVITY";
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
 export const COUNTRYS_W_ACTIVITIES = "COUNTRYS_W_ACTIVITIES";
 export const SEARCH_COUNTRY = "SEARCH_COUNTRY";
+export const GET_ALL_COUNTRYS_FILTER = "GET_ALL_COUNTTRYS_FILTER"
+export const GET_ALL_COUNTRYS_POPULATION = "GET_ALL_COUNTRYS_POPULATION"
+
 
 export const getAllCountrys = () => {
   return async function (dispatch) {
@@ -25,7 +28,11 @@ export const getAllActivities = () => {
     const json = await response.json();
     return dispatch({ type: GET_ALL_ACTIVITY, payload: json });
   };
+  
+
 };
+
+
 
 export const filterCountry = (payload) => {
   return {
@@ -42,22 +49,10 @@ export const AscDes = (payload) => {
 };
 
 export const getNameCountry = (payload) => {
-  try {
-    const payload2 = Touppercase(payload);
-
-    return async function (dispatch) {
-      const response = await fetch(
-        `http://localhost:3001/countries?name=${payload2}`
-      );
-      const json = await response.json();
-      if (json.error) {
-        return alert("Este país no se puede encuentrar");
-      }
-      return dispatch({ type: SEARCH_COUNTRY, payload: json });
-    };
-  } catch (err) {
-    throw new Error(err.message);
-  }
+ return {
+  type: SEARCH_COUNTRY, 
+  payload,
+ };
 };
 
 export const postActivity = (payload) => {
@@ -71,6 +66,8 @@ export const postActivity = (payload) => {
 
 
 };
+
+
 
 // export const getDetail = (payload) =>{
 
@@ -86,7 +83,7 @@ export const postActivity = (payload) => {
 
 //     }catch(err){
 
-//       console.error(err.message);
+//       console.error(err.message); 
 
 //     }
 //   }
@@ -104,3 +101,18 @@ export const getDetail = (id) => {
 
   }
 };
+
+export const filtrarPorContinente = (payload) => {
+  return {
+      type: GET_ALL_COUNTRYS_FILTER,
+      payload
+  }
+}
+
+export const filtrarPorPoblacion = (payload) => {
+  return {
+      type: GET_ALL_COUNTRYS_POPULATION,
+      payload
+  }
+}
+ 

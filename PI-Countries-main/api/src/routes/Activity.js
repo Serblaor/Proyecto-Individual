@@ -4,4 +4,5 @@ const { createActivity } = require('../controllers/activity.controller.js');
 
 router.post('/', createActivity);
 
+
 module.exports = router;

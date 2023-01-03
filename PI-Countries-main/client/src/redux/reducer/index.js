@@ -6,6 +6,8 @@ import {
     GET_ALL_COUNTRYS_ORDER,
     SEARCH_COUNTRY,
     CREATE_ACTIVITY,
+    GET_ALL_COUNTRYS_FILTER,
+    GET_ALL_COUNTRYS_POPULATION,
   } from "../actions";
   
   import {
@@ -59,114 +61,116 @@ import {
         }
   
       case GET_ALL_COUNTRYS_ORDER:
-        if (action.payload === "asc") {
-          let y = state.countrys;
-          let x = state.auxCountrys;
-  
-          var organizado = y.sort(sortArray);
-          var organizado2 = x.sort(sortArray);
-  
+        let paisesOrdenados = [...state.countrys] 
+        if(action.payload === "asc") {
+          paisesOrdenados.sort((a,b) => a.name.localeCompare(b.name))
+        } else if (action.payload === "des") {
+          paisesOrdenados.sort((a,b) => b.name.localeCompare(a.name))
+        }
+        return {
+          ...state,
+          countrys: [...paisesOrdenados]
+        }
+
+        case GET_ALL_COUNTRYS_POPULATION:
+          let paisesOrdenados2 = [...state.countrys] 
+          if(action.payload === "ascpop") {
+            paisesOrdenados2.sort((a,b) => a.population - b.population)
+          } else if (action.payload === "despop") {
+            paisesOrdenados2.sort((a,b) => b.population - a.population)
+          }
           return {
             ...state,
-            countrys: organizado,
-            auxCountrys: organizado2,
-          };
-        }
-        if (action.payload === "des") {
-          return {
-            ...state,
-            countrys: state.countrys.sort(reverseArray),
-            auxCountrys: state.auxCountrys.sort(reverseArray),
-          };
-        }
+            countrys: [...paisesOrdenados2]
+          }
+        
+
+
+
+
+        case GET_ALL_COUNTRYS_FILTER: 
+        if (action.payload=== "allContinents"){
+          return{
+              ...state,
+              countrys: [...state.auxCountrys]
+          }
+      }
+      return {
+          ...state,
+          countrys: [...state.auxCountrys].filter(country => country.continent.toUpperCase() === action.payload.toUpperCase())
+      }
   
-        if (action.payload === "population asc number") {
-          return {
-            ...state,
-            countrys: state.countrys.sort(sortByPopulationPlus),
-            auxCountrys: state.auxCountrys.sort(sortByPopulationPlus),
-          };
-        }
+        // if (action.payload === "Americas") {
+          
+        //   let allCountrys = state.auxCountrys;
   
-        if (action.payload === "population des number") {
-          return {
-            ...state,
-            countrys: state.countrys.sort(sortByPopulationMinus),
-            auxCountrys: state.auxCountrys.sort(sortByPopulationMinus),
-          };
-        }
+        //   const filtered = allCountrys.filter((c) => c.continente === "Americas");
   
-        if (action.payload === "Americas") {
-          let allCountrys = state.countrys;
-          allCountrys = state.auxCountrys;
+        //   return {
+        //     ...state,
+        //     countrys: filtered,
+        //   };
+        // }
   
-          const filtered = allCountrys.filter((c) => c.continente === "Americas");
+        // if (action.payload === "AllContinents") {
+        //   return {
+        //     ...state,
+        //     countrys: state.auxCountrys,
+        //   };
+        // }
   
-          return {
-            ...state,
-            countrys: filtered,
-          };
-        }
+        // if (action.payload === "Oceania") {
+        //   let allCountrys = state.countrys;
+        //   allCountrys = state.auxCountrys;
   
-        if (action.payload === "AllContinents") {
-          return {
-            ...state,
-            countrys: state.auxCountrys,
-          };
-        }
+        //   const filtered = allCountrys.filter((c) => c.continente === "Oceania");
   
-        if (action.payload === "Oceania") {
-          let allCountrys = state.countrys;
-          allCountrys = state.auxCountrys;
+        //   return {
+        //     ...state,
+        //     countrys: filtered,
+        //   };
+        // }
   
-          const filtered = allCountrys.filter((c) => c.continente === "Oceania");
+        // if (action.payload === "Africa") {
+        //   let allCountrys = state.countrys;
+        //   allCountrys = state.auxCountrys;
   
-          return {
-            ...state,
-            countrys: filtered,
-          };
-        }
+        //   const filtered = allCountrys.filter((c) => c.continente === "Africa");
   
-        if (action.payload === "Africa") {
-          let allCountrys = state.countrys;
-          allCountrys = state.auxCountrys;
+        //   return {
+        //     ...state,
+        //     countrys: filtered,
+        //   };
+        // }
   
-          const filtered = allCountrys.filter((c) => c.continente === "Africa");
+        // if (action.payload === "Europe") {
+        //   let allCountrys = state.countrys;
+        //   allCountrys = state.auxCountrys;
   
-          return {
-            ...state,
-            countrys: filtered,
-          };
-        }
+        //   const filtered = allCountrys.filter((c) => c.continente === "Europe");
   
-        if (action.payload === "Europe") {
-          let allCountrys = state.countrys;
-          allCountrys = state.auxCountrys;
+        //   return {
+        //     ...state,
+        //     countrys: filtered,
+        //   };
+        // }
   
-          const filtered = allCountrys.filter((c) => c.continente === "Europe");
+        // if (action.payload === "Asia") {
+        //   let allCountrys = state.countrys;
+        //   allCountrys = state.auxCountrys;
   
-          return {
-            ...state,
-            countrys: filtered,
-          };
-        }
+        //   const filtered = allCountrys.filter((c) => c.continente === "Asia");
   
-        if (action.payload === "Asia") {
-          let allCountrys = state.countrys;
-          allCountrys = state.auxCountrys;
-  
-          const filtered = allCountrys.filter((c) => c.continente === "Asia");
-  
-          return {
-            ...state,
-            countrys: filtered,
-          };
-        }
+        //   return {
+        //     ...state,
+        //     countrys: filtered,
+        //   };
+        // }
   
       case SEARCH_COUNTRY:
         return {
           ...state,
-          countrys: action.payload,
+          countrys: [...state.auxCountrys].filter(country => country.name.toUpperCase().includes(action.payload.toUpperCase()))
         };
   
       case CREATE_ACTIVITY:

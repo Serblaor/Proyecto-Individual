@@ -24,11 +24,11 @@ export function sortArray(a, b) {
   
   //ORDER BY POPULATION ******
   export function sortByPopulationPlus(a, b) {
-    return b.poblacion - a.poblacion;
+    return b.population - a.population;
   }
   
   export function sortByPopulationMinus(a, b) {
-    return a.poblacion - b.poblacion;
+    return a.population - b.population;
   }
   
   //CASE CHANGER ******

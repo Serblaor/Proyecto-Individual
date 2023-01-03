@@ -1,6 +1,6 @@
 .land {
 
-    color: aqua;
+    color: rgb(243, 245, 245);
  
  
  }
@@ -8,10 +8,10 @@
  .land button{
  
      position: relative;
-     background-color:#FFFFFF;
+     background-color:#626262;
      border: none;
      font-size: 20px;
-     color: black;
+     color: rgb(0, 0, 0);
      padding: 20px;
      width: 200px;
      text-align: center;
@@ -47,7 +47,7 @@
    .land button:hover{
  
      color:#FFFFFF;
-     background-color:tomato;
+     background-color:rgb(83, 56, 51);
    }
  
    body{
