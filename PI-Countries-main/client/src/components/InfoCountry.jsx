@@ -22,10 +22,12 @@ export default function InfoCountry() {
     <div>
       {countryDetail ? (
         <nav>
+          
           <div>
             <div>
               <div className={card}>
                 <img src={countryDetail[0]?.img} alt="img NOT found"></img>
+                
                 <h2>{countryDetail[0]?.name}</h2>
 
                 <div className={card}>
@@ -44,7 +46,7 @@ export default function InfoCountry() {
 
               <div className={card}>
                 <p>Subregion: </p>
-                <h4>{countryDetail[0]?.Subregion}</h4>
+                <h4>{countryDetail[0]?.subregion}</h4>
               </div>
 
               <div className={card}>
@@ -64,12 +66,17 @@ export default function InfoCountry() {
                     | {countryDetail.activity} | Activity ID:{" "}
                     {countryDetail.activityid} |
                   </h4>
+                  
                 </div>
+
               ) : (
                 <h4>This Country Dont Have Any Activities Yet</h4>
               )}
+               
             </div>
+            
           </div>
+         
         </nav>
       ) : (
         <h1>404 Information Not Found</h1>

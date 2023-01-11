@@ -1,5 +1,5 @@
 .nav{
-    background-image: url("../imgs/travel2.jpg");
+    background-image: url("../imgs/travel3.jpg");
     display: flex;
     flex:content;
     margin-left: 20px;
@@ -9,24 +9,26 @@
     justify-content: center;
     border-radius: 7px;
     font-size: x-large;
-    margin-bottom: 7%;
+    margin-bottom: 15%;
     width: 300px;
     height: 520px;
    
  }
  
  img{
-     border-radius: 20px;
+     border-radius: 10px;
      border-color: rgb(15, 15, 15);
-     width: 30%;
+     width: 60%;
      margin-top: 15px;
  }
+ 
  
  h3{
  
      text-align: center;
-     margin-top: 20%;
+     margin-top: 10%;
      text-decoration: none;
+     color: black;
  }
  
  h5{
@@ -36,7 +38,7 @@
  }
  
  img:hover{
-     opacity: 0.8;
+     opacity: 0.9;
  }
  
  .display{

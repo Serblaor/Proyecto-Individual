@@ -1,5 +1,5 @@
 body {
-    background: #eee;
+    background: rgb(0, 0, 0);
     font-family: 'Lily Script One';
     
     
@@ -9,14 +9,14 @@ body {
     
     top: 50%;
     left: 50%;
-    width: 100px;
-    height: 150px;
+    width: 190px;
+    height: 250px;
     margin-left: 40px;
     float: left;
     perspective: 500px;
     display: grid;
     grid-template-columns: repeat(auto-fill,200px);
-    gap: 200px;
+    gap: 100px;
     
     margin-top: 10px;
     
@@ -27,8 +27,7 @@ body {
     width: 140%;
     height: 140%;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
-   
-    transition: transform 1s;
+    transition: transform 1.5s;
     transform-style: preserve-3d;
     
   }
@@ -43,19 +42,19 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-   background-image: url("../imgs/travel2.jpg");
-    /* line-height: 100px; */
-    color: #38444b;
+   background-image: url("../imgs/travel3.jpg");
+    line-height: 30px;
+    color: #000000;
     text-align: center;
-    font-size: 19px;
-    border-radius: 100px;
-    /* backface-visibility: hidden; */
+    font-size: 30px;
+    border-radius: 5px;
+    backface-visibility: hidden;
   }
   
   .back {
-    background: #361a13;
-    color: rgb(109, 222, 135);
-    transform: rotateY( 180deg );
+    /* background: #361a13; */
+    color: rgb(0, 0, 0);
+    transform: rotateY( -180deg );
   }
  
   .back a{
@@ -69,13 +68,19 @@ body {
 
   .card img{
     margin-top: 10%
-    padding 1rem;
-    width: 40px;
-    height: 20px;
+    padding 8px;
+    width: 240px;
+    height: 150px;
 
 
   }
 
   .card h4{
-    color: black;
+    color: rgb(0, 0, 0);
+    padding: 0px;
   }
+  .card h2{
+    color: rgb(0, 0, 0);
+    padding: 0px;
+  }
+ 

@@ -10,12 +10,6 @@ import {
     GET_ALL_COUNTRYS_POPULATION,
   } from "../actions";
   
-  import {
-    sortArray,
-    reverseArray,
-    sortByPopulationPlus,
-    sortByPopulationMinus,
-  } from "../../libs";
   
   const initialState = {
     countrys: [],
